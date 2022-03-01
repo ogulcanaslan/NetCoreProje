@@ -1,0 +1,53 @@
+﻿@model NetCoreProje.Models.Urunler
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Urunler</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UrunAd" class="control-label"></label>
+                <input asp-for="UrunAd" class="form-control" />
+                <span asp-validation-for="UrunAd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlisFiyat" class="control-label"></label>
+                <input asp-for="AlisFiyat" class="form-control" />
+                <span asp-validation-for="AlisFiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SatisFiyat" class="control-label"></label>
+                <input asp-for="SatisFiyat" class="form-control" />
+                <span asp-validation-for="SatisFiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Miktar" class="control-label"></label>
+                <input asp-for="Miktar" class="form-control" />
+                <span asp-validation-for="Miktar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReyonNo" class="control-label"></label>
+                <input asp-for="ReyonNo" class="form-control" />
+                <span asp-validation-for="ReyonNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
