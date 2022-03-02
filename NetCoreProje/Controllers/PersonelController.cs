@@ -37,5 +37,12 @@ namespace NetCoreProje.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+        public IActionResult Delete(int id)
+        {
+            Personel personel = _context.Personels.Find(id);
+            _context.Personels.Remove(personel);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
