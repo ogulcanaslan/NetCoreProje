@@ -43,5 +43,43 @@ namespace NetCoreProje.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+        public IActionResult Delete(int id)
+        {
+            Reyonlar reyon = _context.Reyonlars.Find(id);
+            _context.Reyonlars.Remove(reyon);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        public IActionResult Details(int id)
+        {
+            Reyonlar reyonlar  = _context.Reyonlars.Find(id);
+            return View(reyonlar);
+        }
+
+
+        public IActionResult Edit(int id)
+        {
+            Reyonlar reyonlar = _context.Reyonlars.Find(id);
+
+            return View(reyonlar);
+
+        }
+
+
+
+
+        [HttpPost]
+        public IActionResult Edit(Reyonlar reyonlar)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(reyonlar);
+                _context.SaveChanges();
+
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

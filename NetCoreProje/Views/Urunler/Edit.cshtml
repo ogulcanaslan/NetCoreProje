@@ -1,17 +1,18 @@
 ﻿@model NetCoreProje.Models.Urunler
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Create</h1>
+<h1>Edit</h1>
 
 <h4>Urunler</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UrunNo" />
             <div class="form-group">
                 <label asp-for="UrunAd" class="control-label"></label>
                 <input asp-for="UrunAd" class="form-control" />
@@ -25,6 +26,7 @@
             <div class="form-group">
                 <label asp-for="SatisFiyat" class="control-label"></label>
                 <input asp-for="SatisFiyat" class="form-control" />
+                
                 <span asp-validation-for="SatisFiyat" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -38,7 +40,7 @@
                 <span asp-validation-for="ReyonNo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-outline-primary" />
+                <input type="submit" value="Save" class="btn btn-outline-primary" />
             </div>
         </form>
     </div>

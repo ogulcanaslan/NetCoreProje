@@ -12,7 +12,7 @@ namespace NetCoreProje.Controllers
     public class PersonelController : Controller
     {
         private readonly ProjectDBContext _context;
-        private readonly IWebHostEnvironment _webHost;
+        //private readonly IWebHostEnvironment _webHost;
 
         public PersonelController(ProjectDBContext context, IWebHostEnvironment webHost)
         {
@@ -42,6 +42,33 @@ namespace NetCoreProje.Controllers
             Personel personel = _context.Personels.Find(id);
             _context.Personels.Remove(personel);
             _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id)
+        {
+            Personel personel = _context.Personels.Find(id);
+            return View(personel);
+        }
+
+
+        public IActionResult Edit(int id)
+        {
+            Personel personel = _context.Personels.Find(id);
+
+            return View(personel);
+
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Personel personel)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(personel);
+                _context.SaveChanges();
+
+            }
             return RedirectToAction("Index");
         }
     }

@@ -42,5 +42,41 @@ namespace NetCoreProje.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+        public IActionResult Delete(int id)
+        {
+            Urunler urun = _context.Urunlers.Find(id);
+            _context.Urunlers.Remove(urun);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id)
+        {
+            Urunler urunler = _context.Urunlers.Find(id);
+            return View(urunler);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            Urunler urunler = _context.Urunlers.Find(id);
+            urunler.AlisFiyat = Convert.ToDecimal(urunler.AlisFiyat);
+            urunler.SatisFiyat = Convert.ToDecimal(urunler.SatisFiyat);
+            return View(urunler);
+
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Urunler urunler)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                _context.Update(urunler);
+               
+                _context.SaveChanges();
+               
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
